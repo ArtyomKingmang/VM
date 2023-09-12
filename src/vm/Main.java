@@ -1,14 +1,15 @@
 package vm;
 
-import static vm.Bytecode.*;
-import static vm.Bytecode.HALT;
+import vm.asm.VM;
+
+import static vm.asm.Bytecode.*;
 
 public class Main {
     static final int[] add = {
-            CONST, 2,
-            CONST, 3,
-            ADD,
-            HALT
+            CONST.ordinal(), 2,
+            CONST.ordinal(), 3,
+            ADD.ordinal(),
+            HALT.ordinal()
     };
     public static void main(String[] args) throws Exception {
         VM vm = new VM(add, 0, 0);

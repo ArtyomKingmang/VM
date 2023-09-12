@@ -1,13 +1,9 @@
-package vm;
+package vm.asm;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
-
-
-import static vm.Bytecode.*;
 
 public class VM {
     public static final int TRUE = 1;
@@ -24,7 +20,7 @@ public class VM {
     private int sp;
     private int fp;
 
-    boolean trace = false;
+    public boolean trace = false;
     private int lineNum = 0;
 
     public VM(int[] code, int ipmain, int datasize) {
@@ -41,7 +37,7 @@ public class VM {
         loop:
         while (ip < code.length) {
             if (trace) disassemble();
-            switch (nextCode()) {
+            switch (Bytecode.values()[nextCode()]) {
                 case HALT:
                     break loop;
                 case CONST:
@@ -83,9 +79,9 @@ public class VM {
     }
 
     private void disassemble() {
-        Instruction instr = Bytecode.instructions[currCode()];
-        StringBuilder buf = new StringBuilder(instr.name);
-        for (int i = 0; i < instr.nargs; i++) {
+        Bytecode instr = Bytecode.values()[currCode()];
+        StringBuilder buf = new StringBuilder(instr.getName());
+        for (int i = 0; i < instr.getNargs(); i++) {
             buf.append(", ").append(code[ip + i + 1]);
         }
 
