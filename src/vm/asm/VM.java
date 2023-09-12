@@ -46,6 +46,9 @@ public class VM {
                 case ADD:
                     pushStack(popStack() + popStack());
                     break;
+                case PRINT:
+                    System.out.println(popStack());
+                    break;
                 case LOAD:
                     pushStack(getStack(nextCode()));
                     break;
