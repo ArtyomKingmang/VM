@@ -46,6 +46,9 @@ public class VM {
                 case ADD:
                     pushStack(popStack() + popStack());
                     break;
+                case LOAD:
+                    pushStack(getStack(nextCode()));
+                    break;
                 case SUB:
                     int last = popStack();
                     int first = popStack();
@@ -72,6 +75,11 @@ public class VM {
 
     private void pushStack(int value) {
         stack[++sp] = value;
+    }
+    private int getStack(int offset) throws IndexOutOfBoundsException {
+        int index = fp + offset;
+        if (index < 0 || index > sp) throw new IndexOutOfBoundsException(Integer.toString(index));
+        return stack[index];
     }
 
     private int popStack() {
