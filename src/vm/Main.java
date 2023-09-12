@@ -9,7 +9,9 @@ public class Main {
             CONST.ordinal(), 2,
             CONST.ordinal(), 3,
             ADD.ordinal(),
+            PRINT.ordinal(),
             HALT.ordinal()
+
     };
     public static void main(String[] args) throws Exception {
         VM vm = new VM(add, 0, 0);
