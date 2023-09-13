@@ -38,6 +38,9 @@ public class VM {
         while (ip < code.length) {
             if (trace) disassemble();
             switch (Bytecode.values()[nextCode()]) {
+                case RET:
+                    ret();
+                    break;
                 case HALT:
                     break loop;
                 case CONST:
@@ -76,6 +79,18 @@ public class VM {
         return code[ip];
     }
 
+    private void ret() {
+        int result = popStack();
+        sp = fp;
+        ip = popStack();
+        fp = popStack();
+        int nargs = popStack();
+        for (int i = 0; i < nargs; i++) {
+            popStack();
+        }
+
+        pushStack(result);
+    }
     private void pushStack(int value) {
         stack[++sp] = value;
     }

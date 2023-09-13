@@ -13,6 +13,8 @@ public class Main {
             HALT.ordinal()
 
     };
+
+
     public static void main(String[] args) throws Exception {
         VM vm = new VM(add, 0, 0);
         vm.trace = true;
