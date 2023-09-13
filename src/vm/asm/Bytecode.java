@@ -1,6 +1,7 @@
 package vm.asm;
 
 public enum Bytecode {
+    RET("ret",0),
     LOAD("load",1),
     HALT("halt", 0),
     CONST("const", 1),
