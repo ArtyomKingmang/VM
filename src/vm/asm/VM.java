@@ -38,6 +38,9 @@ public class VM {
         while (ip < code.length) {
             if (trace) disassemble();
             switch (Bytecode.values()[nextCode()]) {
+
+                case CALL:
+                    call(nextCode(), nextCode());
                 case RET:
                     ret();
                     break;
@@ -69,6 +72,13 @@ public class VM {
 
         if (trace && ip < code.length) disassemble();
         if (trace && !usedGlobalIndexes.isEmpty()) System.err.println(globalsToString());
+    }
+    private void call(int addr, int nargs) {
+        pushStack(nargs);
+        pushStack(fp);
+        pushStack(ip);
+        fp = sp;
+        ip = addr;
     }
 
     private int nextCode() {
