@@ -49,6 +49,8 @@ public class VM {
                 case CONST:
                     pushStack(nextCode());
                     break;
+                case DIV:
+                    pushStack(popStack() / popStack());
                 case ADD:
                     pushStack(popStack() + popStack());
                     break;
