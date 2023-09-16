@@ -12,7 +12,7 @@ public class VM {
     public static final int STACK_SIZE = 100;
 
     private int[] code;
-    private int[] stack;
+    public int[] stack;
     private int[] globals;
     private Set<Integer> usedGlobalIndexes = new HashSet<Integer>();
 
