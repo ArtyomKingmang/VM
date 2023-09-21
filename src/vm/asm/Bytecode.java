@@ -10,7 +10,8 @@ public enum Bytecode {
     ADD("add", 0),
     SUB("sub", 0),
     MUL("mul", 0),
-    PRINT("print",0);
+    PRINT("print",0),
+    JUMP("jump",1);
 
     private final String name;
     private final int nargs;
