@@ -63,6 +63,9 @@ public class VM {
                 case JUMP:
                     ip = currCode();
                     break;
+                case JUMPT:
+                    jumpIf(1);
+                    break;
                 case SUB:
                     int last = popStack();
                     int first = popStack();
@@ -84,6 +87,10 @@ public class VM {
         pushStack(ip);
         fp = sp;
         ip = addr;
+    }
+    private void jumpIf(int bool) {
+        int addr = nextCode();
+        if (popStack() == bool) ip = addr;
     }
 
     private int nextCode() {
