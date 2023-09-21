@@ -66,6 +66,9 @@ public class VM {
                 case JUMPT:
                     jumpIf(1);
                     break;
+                case JUMPF:
+                    jumpIf(0);
+                    break;
                 case SUB:
                     int last = popStack();
                     int first = popStack();

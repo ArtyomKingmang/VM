@@ -2,6 +2,7 @@ package vm.asm;
 
 public enum Bytecode {
     JUMPT("jumpt",1),
+    JUMPF("jumpf",1),
     CALL("call",2),
     RET("ret",0),
     DIV("div",0),
@@ -13,6 +14,7 @@ public enum Bytecode {
     MUL("mul", 0),
     PRINT("print",0),
     JUMP("jump",1);
+
 
     private final String name;
     private final int nargs;
