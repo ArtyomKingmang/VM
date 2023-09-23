@@ -3,6 +3,7 @@ package vm.asm;
 public enum Bytecode {
     JUMPT("jumpt",1),
     JUMPF("jumpf",1),
+    STORE("store",1),
     CALL("call",2),
     RET("ret",0),
     DIV("div",0),

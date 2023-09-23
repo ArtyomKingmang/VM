@@ -69,6 +69,9 @@ public class VM {
                 case JUMPF:
                     jumpIf(0);
                     break;
+                case STORE:
+                    setStack(nextCode(), popStack());
+                    break;
                 case SUB:
                     int last = popStack();
                     int first = popStack();
@@ -84,6 +87,12 @@ public class VM {
         if (trace && ip < code.length) disassemble();
         if (trace && !usedGlobalIndexes.isEmpty()) System.err.println(globalsToString());
     }
+    private void setStack(int offset, int value) throws IndexOutOfBoundsException {
+        int index = fp + offset;
+        if (index < 0 || index > sp) throw new IndexOutOfBoundsException(Integer.toString(index));
+        stack[index] = value;
+    }
+
     private void call(int addr, int nargs) {
         pushStack(nargs);
         pushStack(fp);
