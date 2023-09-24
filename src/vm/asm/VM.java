@@ -60,6 +60,9 @@ public class VM {
                 case LOAD:
                     pushStack(getStack(nextCode()));
                     break;
+                case LT:
+                    pushStack(popStack() > popStack() ? TRUE : FALSE);
+                    break;
                 case JUMP:
                     ip = currCode();
                     break;

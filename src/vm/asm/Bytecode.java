@@ -14,7 +14,8 @@ public enum Bytecode {
     SUB("sub", 0),
     MUL("mul", 0),
     PRINT("print",0),
-    JUMP("jump",1);
+    JUMP("jump",1),
+    LT("lt",0);
 
 
     private final String name;
