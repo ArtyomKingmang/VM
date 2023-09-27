@@ -63,6 +63,9 @@ public class VM {
                 case LT:
                     pushStack(popStack() > popStack() ? TRUE : FALSE);
                     break;
+                case EQ:
+                    pushStack(popStack() == popStack() ? TRUE : FALSE);
+                    break;
                 case JUMP:
                     ip = currCode();
                     break;

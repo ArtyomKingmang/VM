@@ -41,7 +41,7 @@ public class Calculator {
 
         VM vm = new VM(instr,0,0);
         vm.trace = true;
-        vm.exec();
+        //vm.exec();
 
     }
 }
